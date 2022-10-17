@@ -68,8 +68,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
    await depositHandle.wait();
 
   // Deploy this contract. The returned object will be of a `Contract` type, similarly to ones in `ethers`.
-  // `greeting` is an argument for contract constructor.
-  const pubContract = await deployer.deploy(artifact);
+  const pubContract = await deployer.deploy(artifact,  []);
 
   // Show the contract info.
   const contractAddress = pubContract.address;
