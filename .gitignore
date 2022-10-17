@@ -3,3 +3,5 @@ artifacts
 contracts/tmp
 .idea/
 node_modules/
+contracts/
+deploy/
