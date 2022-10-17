@@ -72,7 +72,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const pubContract = await deployer.deploy(artifact);
 
   // Show the contract info.
-  const contractAddress = inputOutputContract.address;
+  const contractAddress = pubContract.address;
   console.log(`${artifact.contractName} was deployed to ${contractAddress}`);
   console.log("Constructor params ABI: ", inputOutputContract.interface.encodeDeploy([]))
 }
