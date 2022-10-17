@@ -73,19 +73,22 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   // Show the contract info.
   const contractAddress = pubContract.address;
   console.log(`${artifact.contractName} was deployed to ${contractAddress}`);
-  console.log("Constructor params ABI: ", inputOutputContract.interface.encodeDeploy([]))
+  console.log("Constructor params ABI: ", pubContract.interface.encodeDeploy([]))
+  console.table(pubContract.interface.encodeDeploy([]))
 }
     """ % (wallet, name)
 
 
 def create_contract(name: str) -> None:
-    os.mkdir("contracts")
+    if "contracts" not in os.listdir():
+        os.mkdir("contracts")
     with open(f"contracts/{name}.sol", "w") as file:
         file.writelines(get_contract(name))
 
 
 def create_deploy(name: str, wallet: str) -> None:
-    os.mkdir("deploy")
+    if "deploy" not in os.listdir():
+        os.mkdir("deploy")
     with open(f"deploy/deploy.ts", "w") as file:
         file.writelines(get_deploy(name, wallet))
 
